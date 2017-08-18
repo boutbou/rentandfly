@@ -5,18 +5,20 @@
   <div class="row">
     <% @drones.each do |drone| %>
     <div class="col-xs-12 col-sm-4">
-    <%= link_to drone_path(drone) do%>
+      <%= link_to drone_path(drone) do%>
       <!-- # fond des cards et css à définir -->
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
         <!-- # manque variable user_id.zipcode a activer -->
-        <div class="card-category"> <%= drone.user_id.zip_code %></div>
-        <div class="card-descript"
-          <h2><%= drone.user_id.first_name %> drone's</h2>
+        <div class="card-category"> <%= drone.user.zip_code %></div>
+        <div class="card-descript">
+          <h2><%= drone.user.first_name %> drone's</h2>
           <p> <%= drone.description %></p>
         </div>
-        <img class="card-price" <%= drone.daily_price %>>
+        <div class="card-price"> <%= drone.daily_price %> € >
+        </div>
       </div>
       <% end %>
     </div>
     <% end %>
   </div>
+</div>
