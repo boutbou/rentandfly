@@ -9,9 +9,6 @@ class DronesController < ApplicationController
   end
 
   def show
-    @drone = Drone.find(params[:id])
-    @rental = Rental.new
-    @rental.drone = Drone.find(params[:id])
   end
 
   def new
