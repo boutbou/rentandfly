@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'profile/edit'
+
+  get 'profile/update'
+
   resources :drones do
     resources :rentals, only: [ :new, :create ]
   end
@@ -9,6 +13,12 @@ Rails.application.routes.draw do
 
   get 'drones/search', to: 'drones#search'
 
+  resources :profile, only: [ :edit, :update ]
+
+  # get 'profile/edit', to: 'profile#edit'
+
+  # patch 'profile/update', to: 'profile#update'
+
   # get 'rentals/index'
 
   # get 'rentals/show'
@@ -16,7 +26,7 @@ Rails.application.routes.draw do
   # get 'rentals/destroy'
 
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations:  "users/registrations" }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
