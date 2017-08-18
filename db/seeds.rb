@@ -5,11 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Drone.destroy_all
+Rental.destroy_all
+
 puts 'Creating a unique fake user...'
 20.times do
   user = User.new(
     email: Faker::Internet.safe_email,
-    password: "blblabla5x4548"
+    password: "blblabla5x4548",
+    first_name: Faker::GameOfThrones.character,
+    zip_code: 13006
   )
  user.save!
 end
