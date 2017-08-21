@@ -16,7 +16,7 @@ class DronesController < ApplicationController
   def create
 
     @drone = Drone.new(params_drone)
-    @drone.user = @user = current_user
+    @drone.user = current_user
     if @drone.save
       redirect_to dashboard_path
     else
