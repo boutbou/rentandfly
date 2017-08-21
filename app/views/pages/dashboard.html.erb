@@ -1,3 +1,20 @@
+<!-- Bouton "ajouter un drone" -->
 <%= link_to "Add a drone", new_drone_path, class: "btn btn-primary" %>
 
+<!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
+la page edit suffit pour les utilisateurs connectés non ?  -->
+
+
+<ul>
+  <% Drone.all.each do |drone| %>
+  <li>
+    <% if drone.user = current_user %>
+    <%= drone.model %>
+    <%= link_to "edit", edit_drone_path(drone) %> |
+    <%= link_to "delete", drone_path(drone), method: :delete %>
+    <% end %>
+    <% end %>
+  </li>
+
+</ul>
 
