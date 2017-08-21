@@ -1,2 +1,9 @@
 <h1>Rentals#new</h1>
-<p>Find me in app/views/rentals/new.html.erb</p>
+
+<%= simple_form_for @rental do |f| %>
+ <%= f.error_notification %>
+  <%= f.input :start_date, required: true, autofocus: true %>
+  <%= f.input :end_date, required: true, autofocus: true %>
+  <%= :total_price = (:end_date - :start_date) * @drone.daily_price  %>
+<%= f.submit "Book it now", class: "btn btn-primary" %>
+<% end %>
