@@ -7,6 +7,9 @@ class DronesController < ApplicationController
   end
 
   def show
+    set_drone
+    @rental = Rental.new
+    @rental.drone = Drone.find(params[:id])
   end
 
   def new
@@ -14,8 +17,7 @@ class DronesController < ApplicationController
   end
 
   def create
-
-    @drone = Drone.new(params_drone)
+    @drone = Drone.new(params_drone_create)
     @drone.user = current_user
     if @drone.save
       redirect_to dashboard_path
@@ -25,22 +27,40 @@ class DronesController < ApplicationController
   end
 
   def edit
+    @drone = Drone.find(params[:id])
   end
 
   def update
+    @drone = Drone.find(params[:id])
+    @drone.update(params_drone_update)
+    redirect_to dashboard_path
   end
 
   def destroy
+    @drone = Drone.find(params[:id])
+    @drone.destroy
+
+    redirect_to dashboard_path
   end
 
   def search
   end
 
   private
-  def params_drone
+  def params_drone_create
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
                                   :controller, :deposit, :battery)
+  end
+
+  def set_drone
+    @drone = Drone.find(params[:id])
+  end
+
+  def params_drone_update
+    params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
+                                  :monthly_deal, :autonomy, :range,
+                                  :controller, :deposit, :battery, :available)
   end
 end
 
