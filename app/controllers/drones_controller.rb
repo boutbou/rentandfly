@@ -7,6 +7,9 @@ class DronesController < ApplicationController
   end
 
   def show
+    set_drone
+    @rental = Rental.new
+    @rental.drone = Drone.find(params[:id])
   end
 
   def new
@@ -48,6 +51,10 @@ class DronesController < ApplicationController
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
                                   :controller, :deposit, :battery)
+  end
+
+  def set_drone
+    @drone = Drone.find(params[:id])
   end
 
   def params_drone_update
