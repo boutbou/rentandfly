@@ -11,9 +11,11 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
     <% if drone.user = current_user %>
     <%= drone.model %>
     <%= link_to "edit", edit_drone_path(drone) %> |
-    <%= link_to "delete", drone_path(drone), method: :delete %>
+    <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
     <% end %>
   </li>
 </ul>
+
+
 
