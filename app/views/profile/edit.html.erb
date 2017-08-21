@@ -5,6 +5,7 @@
   <%= f.input :zip_code, required: false, autofocus: true %>
   <%= f.input :city, required: false, autofocus: true %>
   <%= f.input :description, required: false, autofocus: true, as: :text %>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.submit "Update my profile", class: "btn btn-primary" %>
 <% end %>
 

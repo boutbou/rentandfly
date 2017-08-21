@@ -1,7 +1,9 @@
 class ProfileController < ApplicationController
 
   def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:account_update, keys: [:address, :zip_code, :city, :description])
+  devise_parameter_sanitizer.permit(:account_update, keys: [:address, :zip_code,
+                                                            :city, :description,
+                                                            :photo])
   end
 
   def edit
@@ -17,7 +19,9 @@ class ProfileController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :zip_code, :city, :description)
+    params.require(:user).permit(:first_name,
+                                 :last_name, :address, :zip_code, :city,
+                                 :description, :photo)
   end
 end
 
