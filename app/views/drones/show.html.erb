@@ -3,8 +3,8 @@
 <!-- # creation d'une vue de un drone bootstrappée integrable dans une card pour le dashboard -->
 <div class="container">
     <div class="col-xs-12 col-sm-4">
-      <% if @drone.description? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.pexels.com/photos/442587/pexels-photo-442587.jpeg')">
+      <% if @drone.photo_drone? %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
         <div class="card-category">Popular</div>
         <div class="card-description">
           <h3>Book <%= @drone.user.first_name %> drone's NOW !! </h3>
