@@ -7,7 +7,7 @@
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h3>Book <%= @drone.user.first_name %> drone's NOW !! </h3>
+          <h3>Book <%= @drone.user.first_name %>'s drone NOW !! </h3>
           <ul>
             <h4>It's a wonderfull <% @drone.brand %> </h4>
             <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>
@@ -26,7 +26,7 @@
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.pexels.com/photos/442587/pexels-photo-442587.jpeg')">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h3>Book <%= @drone.user.first_name %> drone's NOW !! %></h3>
+          <h3>Book <%= @drone.user.first_name %>'s drone NOW !! %></h3>
           <ul>
             <h4>It's a wonderfull <% @drone.brand %> </h4>
             <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>

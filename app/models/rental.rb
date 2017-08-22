@@ -4,6 +4,6 @@ class Rental < ApplicationRecord
   before_validation :totalprice
 
   def totalprice
-    self.total_price = ((end_date - start_date) * 20)
+    self.total_price = ((end_date - start_date) * @rental.drone.daily_price)
   end
 end
