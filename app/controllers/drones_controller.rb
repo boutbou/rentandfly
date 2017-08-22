@@ -1,5 +1,5 @@
 class DronesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [ :search, :show ]
   def index
     # possibilité d'un if pour conditionner une selection de l'index
     # en fonction d'un paramettre de recherche
