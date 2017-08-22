@@ -37,6 +37,9 @@ puts 'Creating 20 fake drones...'
     deposit: 780,
     description: Faker::HowIMetYourMother.quote
   )
+
+  drone.user = User.first
+
  drone.save!
 end
 puts 'Drones Finished!'
@@ -44,12 +47,14 @@ puts 'Drones Finished!'
 puts 'Creating 20 fake rentals...'
 20.times do
   rental = Rental.new(
-    start_date: 100817,
+    start_date: 170917,
     end_date: 190817,
     user_id: 1,
     drone_id: Random.new.rand(1..40),
     total_price: 1000
   )
+  rental.user = User.last
+  rental.drone = Drone.first
   rental.save!
 end
 puts 'rentals Finished!'

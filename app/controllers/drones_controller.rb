@@ -44,7 +44,11 @@ class DronesController < ApplicationController
   end
 
   def search
+    searched_start_date = params[:searched_start_date]
+    searched_end_date = params[:searched_end_date]
+    @available_drones = available_drones(searched_start_date, searched_end_date)
   end
+
 
   private
   def params_drone_create
@@ -61,6 +65,18 @@ class DronesController < ApplicationController
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
                                   :controller, :deposit, :battery, :available)
+  end
+
+  def available_drones(searched_start_date, searched_end_date)
+    return if searched_start_date.nil? || searched_end_date.nil?
+    rentals = Rental.where("start_date >= :s_start_date",
+                      {s_start_date: params[:searched_start_date],
+                       s_end_date: params[:searched_end_date]})
+    drones = []
+    rentals.each do |rental|
+      drones << rental.drone
+    end
+    drones.uniq
   end
 end
 
