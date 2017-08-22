@@ -18,7 +18,6 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 
-
 #image management
 
 gem 'cloudinary'
