@@ -1,2 +1,57 @@
 <h1>Drones#show</h1>
-<p>Find me in app/views/drones/show.html.erb</p>
+
+<!-- # creation d'une vue de un drone bootstrappée integrable dans une card pour le dashboard -->
+<div class="container">
+    <div class="col-xs-12 col-sm-4">
+      <% if @drone.photo_drone? %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h3>Book <%= @drone.user.first_name %>'s drone NOW !! </h3>
+          <ul>
+            <h4>It's a wonderfull <% @drone.brand %> </h4>
+            <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>
+            <li> Model : <% @drone.model %></li>
+            <li> Range : <% @drone.range %></li>
+            <li> Time Flight : <% @drone.autonomy %> min</li>
+            <li> Number of batteries : Rent with <% @drone.battery %> batteries</li>
+            <li> Need of controller : <% @drone.controller ? "Yes" : "No" %></li>
+            <li> Deposit : <% @drone.deposit %></li>
+            <li> What's amazing about this drone : <% @drone.description %></li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.pexels.com/photos/442587/pexels-photo-442587.jpeg')">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h3>Book <%= @drone.user.first_name %>'s drone NOW !! %></h3>
+          <ul>
+            <h4>It's a wonderfull <% @drone.brand %> </h4>
+            <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>
+            <li> Model : <% @drone.model %></li>
+            <li> Range : <% @drone.range %></li>
+            <li> Time Flight : <% @drone.autonomy %> min</li>
+            <li> Number of batteries : Rent with <% @drone.battery %> batteries</li>
+            <li> Need of controller : <% @drone.controller ? "Yes" : "No" %></li>
+            <li> Deposit : <% @drone.deposit %></li>
+            <li> What's amazing about this drone : <% @drone.description %></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+  </div>
+
+  <!-- # formulaire de reservation-->
+  <div class="container">
+    <h4>Book it !</h4>
+    <%= simple_form_for [@drone, @rental], method: :get, url: new_drone_rental_path(@drone) do |f| %>
+    <%= f.error_notification message: @drone.errors.messages[:rental].first %>
+    <%= f.input :start_date, label: 'Quantité', error: 'La date de debut est obligatoire' %>
+    <%= f.input :end_date, label: 'Description', error: 'La date de fin est obligatoire' %>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+
+  <%= link_to "Return to search", drones_path %>

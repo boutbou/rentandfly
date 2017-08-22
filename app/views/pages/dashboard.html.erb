@@ -10,4 +10,27 @@
   </a>
 </div>
 
+<!-- Bouton "ajouter un drone" -->
+<%= link_to "Add a drone", new_drone_path, class: "btn btn-primary" %>
+
+<!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
+la page edit suffit pour les utilisateurs connectés non ?  -->
+
+<ul>
+  <% Drone.all.each do |drone| %>
+  <li>
+    <% if drone.user = current_user %>
+    <% if drone.photo_drone? %>
+    <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+    <% end %>
+    <%= drone.model %>
+    <%= link_to "edit", edit_drone_path(drone) %> |
+    <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+    <% end %>
+  </li>
+</ul>
+
+
+
 

@@ -40,16 +40,3 @@ puts 'Creating 20 fake drones...'
  drone.save!
 end
 puts 'Drones Finished!'
-
-puts 'Creating 20 fake rentals...'
-20.times do
-  rental = Rental.new(
-    start_date: 100817,
-    end_date: 190817,
-    user_id: 1,
-    drone_id: Random.new.rand(1..40),
-    total_price: 1000
-  )
-  rental.save!
-end
-puts 'rentals Finished!'
