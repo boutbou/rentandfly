@@ -4,19 +4,28 @@ class RentalsController < ApplicationController
   end
 
   def show
+    @rental = Rental.find(params[:id])
   end
 
   def destroy
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+
+    redirect_to dashboard_path
   end
 
   def create
-    @rental = Rental.new(params_rental)
+    @rental = Rental.new(params_rental_create)
     @rental.drone = Drone.find(params[:drone_id])
     @rental.user = current_user
-    if @rental.save
-      redirect_to dashboard_path, notice: "OK, drone booked for a total price of #{@rental.total_price} €"
+    if @rental.drone.available?
+      if @rental.save
+        redirect_to dashboard_path, notice: "OK, drone booked for a total price of #{@rental.total_price} €"
+      else
+        render "rentals/new", notice: "Wrong booking not made"
+      end
     else
-      render "rentals/new"
+      render "rentals/new", notice: "This drone is not available"
     end
   end
 
@@ -25,9 +34,13 @@ class RentalsController < ApplicationController
     @drone = Drone.find(params[:drone_id])
   end
 
-
   def params_rental
     params.require(:rental).permit(:end_date, :start_date)
   end
-private
+
+  private
+  def params_rental_create
+    params.require(:rental).permit(:end_date, :start_date)
+  end
+
 end
