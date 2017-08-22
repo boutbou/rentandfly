@@ -1,0 +1,31 @@
+.btn-red {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: red;
+  transition: background 0.3s ease;
+}
+.btn-red:hover {
+  background: #EA3F3F;
+  text-decoration: none;
+  color: white;
+}
+
+.cta {
+  color: white;
+  font-size: 19px;
+  background-color: red;
+  border-radius: 4px;
+  font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.cta:hover {
+   background: #EA3F3F;
+  text-decoration: none;
+  color: white;
+}

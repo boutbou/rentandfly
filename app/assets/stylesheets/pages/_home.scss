@@ -1,1 +1,15 @@
-// Specific CSS for your home-page
+.home-wrapper {
+  height: calc(100vh - 140px);
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-content h1 {
+  font-size: 60px
+}
+
+.home-content h2 {
+  font-size: 25px
+}
+

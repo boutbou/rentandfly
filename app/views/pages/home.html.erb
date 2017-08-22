@@ -1,3 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-caca
+
+<div class="home-wrapper" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home.jpg" %>');">
+  <div class="home-content" style="width: 80%; padding-top: 100px">
+    <h1>Fly there</h1>
+    <h2>Rent drones from individuals and <br> experience flying like never before</h2>
+    <br>
+    <div class="form-home">
+      <form action="/drones" method="get" class="form-inline text-center padded">
+        <div class="form-group">
+          <label class="sr-only" for="inlineFormInput">City</label>
+          <input class="form-control" type="text" id="inlineFormInput" placeholder="Paris" name="city">
+        </div>
+
+        <div class="form-group">
+          <label for="checkin" class="sr-only">Checkin</label>
+          <input class="form-control" type="date" id="checkin" name="date_check_in"value="<%= Date.today %>">
+        </div>
+        <div class="form-group">
+          <label for="checkout" class="sr-only">Checkin</label>
+          <input class="form-control" type="date" id="checkout" name="date_check_out"value="<%= Date.today %>">
+        </div>
+        <button type="submit" class="btn btn-default cta">Go</button>
+      </form>
+    </div>
+  </div>
+</div>
+
