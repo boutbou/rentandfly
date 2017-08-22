@@ -8,24 +8,28 @@
       <div class="drone-card">
         <%= link_to drone_path(drone) do%>
         <!-- # fond des cards et css à définir -->
-        <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://petapixel.com/assets/uploads/2017/04/swelpro_feat.jpg');">
-          <div class="card-price">
-            <%= drone.daily_price %> € / Jour
+        <% if drone.photo_drone? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+          <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://petapixel.com/assets/uploads/2017/04/swelpro_feat.jpg');">
+            <% end %>
+            <div class="card-price">
+              <%= drone.daily_price %> € / Jour
+            </div>
           </div>
+          <div class="card-info">
+            <!-- # manque variable user_id.zipcode a activer -->
+            <div class="circle-back">
+              <div class="card-category center"> <%= drone.user.zip_code %></div>
+            </div>
+            <div class="card-descript">
+              <h2><%= drone.user.first_name %> drone's</h2>
+              <p> <%= drone.description %></p>
+            </div>
+          </div>
+          <% end %>
         </div>
-        <div class="card-info">
-          <!-- # manque variable user_id.zipcode a activer -->
-          <div class="circle-back">
-            <div class="card-category center"> <%= drone.user.zip_code %></div>
-          </div>
-          <div class="card-descript">
-            <h2><%= drone.user.first_name %> drone's</h2>
-            <p> <%= drone.description %></p>
-          </div>
-        </div>
-        <% end %>
       </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
-</div>

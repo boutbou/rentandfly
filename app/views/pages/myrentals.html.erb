@@ -1,8 +1,8 @@
 <div class="tabs1">
-  <a class="tab1 active">
+  <a class="tab1" href="<%= dashboard_path %>">
     <h3>My drones</h3>
   </a>
-  <a class="tab1" href="<%= myrentals_path %>">
+  <a class="tab1 active" >
     <h3>My rentals</h3>
   </a>
   <a class="tab1" href="<%= profile_edit_path %>">
@@ -17,20 +17,15 @@
 la page edit suffit pour les utilisateurs connectés non ?  -->
 
 <ul>
-  <% Drone.all.each do |drone| %>
+  <% Rental.all.each do |rental| %>
   <li>
-    <% if drone.user = current_user %>
-    <% if drone.photo_drone? %>
-    <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+    <% if rental.user_id = current_user %>
+    <% if rental.drone.photo_drone? %>
+    <%= cl_image_tag rental.drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
     <% end %>
-    <%= drone.model %>
-    <%= link_to "edit", edit_drone_path(drone) %> |
-    <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= rental.drone.model %>
+    <%= rental.drone.available %> |
     <% end %>
     <% end %>
   </li>
 </ul>
-
-
-
-
