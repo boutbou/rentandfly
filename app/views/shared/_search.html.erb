@@ -1,0 +1,17 @@
+
+<form action="/drones/search" method="get" class="form-inline text-center padded">
+  <div class="form-group">
+    <label class="sr-only" for="inlineFormInput">City</label>
+    <input class="form-control" type="text" id="inlineFormInput" placeholder="Paris" name="city">
+  </div>
+
+  <div class="form-group">
+    <label for="checkin" class="sr-only">Checkin</label>
+    <input class="form-control" type="date" id="checkin" name="searched_start_date" value="<%= Date.today %>">
+  </div>
+  <div class="form-group">
+    <label for="checkout" class="sr-only">Checkin</label>
+    <input class="form-control" type="date" id="checkout" name="searched_end_date" value="<%= Date.today %>">
+  </div>
+  <button type="submit" class="btn btn-default cta">Go</button>
+</form>
