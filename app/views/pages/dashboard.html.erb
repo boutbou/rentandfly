@@ -17,18 +17,20 @@
 la page edit suffit pour les utilisateurs connectés non ?  -->
 
 <ul>
-  <% Drone.all.each do |drone| %>
-  <li>
-    <% if drone.user = current_user %>
-    <% if drone.photo_drone? %>
-    <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
-    <% end %>
-    <%= drone.model %>
-    <%= link_to "edit", edit_drone_path(drone) %> |
-    <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
-    <% end %>
-    <% end %>
+  <% if current_user.drones = [] %>
+    <p>You currently have no drone</p>
+  <% else %>
+    <% current_user.drones.each do |drone| %>
+      <li>
+      <% if drone.photo_drone? %>
+      <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+      <% end %>
+      <%= drone.model %>
+      <%= link_to "edit", edit_drone_path(drone) %> |
+      <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
   </li>
+  <% end %>
+  <% end %>
 </ul>
 
 
