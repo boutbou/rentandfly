@@ -7,7 +7,7 @@
     <div class="col-xs-12 col-sm-4">
       <%= link_to drone_path(drone) do%>
       <!-- # fond des cards et css à définir -->
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @drone.photo_drone.path, height: 300, width: 400, crop: :fill %>');">
         <!-- # manque variable user_id.zipcode a activer -->
         <div class="card-category"> <%= drone.user.zip_code %></div>
         <div class="card-descript">
