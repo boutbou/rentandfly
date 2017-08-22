@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo.jpg" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -38,7 +38,11 @@
         </div>
       </div>
     <% else %>
+       <!-- Add a drone (when logged out) -->
+      <a href="#" class="btn-red" style="margin-right: 60px">Add a drone</a>
       <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- Signup link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
