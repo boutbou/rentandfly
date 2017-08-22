@@ -54,7 +54,7 @@ class DronesController < ApplicationController
   def params_drone_create
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
-                                  :controller, :deposit, :battery,
+                                  :controller, :deposit, :battery, :description,
                                   :photo_drone, photo_footage: [])
   end
 
@@ -84,7 +84,7 @@ class DronesController < ApplicationController
   def drone_no_rental
     drones_no_rental = []
     Drone.all.each do |drone|
-      drones_no_rental << drone if drone.rentals = []
+      drones_no_rental << drone if drone.rentals == []
     end
     drones_no_rental
   end

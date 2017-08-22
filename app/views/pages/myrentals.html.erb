@@ -15,11 +15,10 @@
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
 la page edit suffit pour les utilisateurs connectés non ?  -->
-
 <ul>
   <% Rental.all.each do |rental| %>
   <li>
-    <% if rental.user_id = current_user %>
+    <% if rental.user_id == current_user %>
     <% if rental.drone.photo_drone? %>
     <%= cl_image_tag rental.drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
     <% end %>

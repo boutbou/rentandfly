@@ -15,9 +15,8 @@
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
 la page edit suffit pour les utilisateurs connectés non ?  -->
-
 <ul>
-  <% if current_user.drones = [] %>
+  <% if current_user.drones.empty? %>
     <p>You currently have no drone</p>
   <% else %>
     <% current_user.drones.each do |drone| %>
