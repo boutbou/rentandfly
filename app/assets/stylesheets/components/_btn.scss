@@ -6,6 +6,11 @@
   background: red;
   transition: background 0.3s ease;
 }
+
+.nav {
+  margin-right: 60px;
+}
+
 .btn-red:hover {
   background: #EA3F3F;
   text-decoration: none;
@@ -25,7 +30,7 @@
 }
 
 .cta:hover {
-   background: #EA3F3F;
-  text-decoration: none;
-  color: white;
+ background: #EA3F3F;
+ text-decoration: none;
+ color: white;
 }
