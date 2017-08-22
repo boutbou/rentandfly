@@ -71,9 +71,9 @@ class DronesController < ApplicationController
 
   def available_drones(searched_start_date, searched_end_date)
     return if searched_start_date.nil? || searched_end_date.nil?
-    rentals = Rental.where("start_date >= :s_start_date",
-                      {s_start_date: params[:searched_start_date],
-                       s_end_date: params[:searched_end_date]})
+    # binding.pry
+    rentals = Rental.where.not(start_date: (searched_start_date..searched_end_date))
+    rentals = rentals.where.not(end_date: (searched_start_date..searched_end_date))
     drones = []
     rentals.each do |rental|
       drones << rental.drone
