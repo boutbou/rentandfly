@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   get 'profile/update'
 
+  get 'drones/search', to: 'drones#search'
+
+
   resources :drones do
     resources :rentals, only: [ :new, :create ]
   end
@@ -12,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
 
-  get 'drones/search', to: 'drones#search'
+
 
   resources :profile, only: [ :edit, :update ]
 

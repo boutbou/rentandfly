@@ -1,2 +1,25 @@
-<h1>Drones#search</h1>
-<p>Find me in app/views/drones/search.html.erb</p>
+
+
+
+<form action="/drones/search">
+  Starting date :<br>
+  <input type="date" name="searched_start_date">
+  <br>Ending date :<br>
+  <input type="date" name="searched_end_date">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- available drones renvoie un array de drone disponible-->
+
+<% unless @available_drones.nil? %>
+  <ul>
+    <% @available_drones.each do |drone| %>
+    <li>
+      <%= drone.model %>
+    </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
