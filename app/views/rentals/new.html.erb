@@ -1,3 +1,17 @@
 <h1>Rentals#new</h1>
 
+<%= simple_form_for @rental, url: drone_rentals_path(@drone) do |f| %>
+ <%= f.error_notification %>
+  <%= f.input :start_date, required: true, autofocus: true %>
+  <%= f.input :end_date, required: true, autofocus: true %>
+  <%= @rental.total_price  %>
+<%= f.submit "Book it now", class: "btn btn-primary" %>
+<% end %>
+
+<!-- Bouton de suppression d'un drone-->
+
+<%= link_to "delete", rental_path(@drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+
+
+
 

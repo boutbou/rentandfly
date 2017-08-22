@@ -44,6 +44,7 @@ puts 'Creating 20 fake drones...'
 end
 puts 'Drones Finished!'
 
+
 puts 'Creating 20 fake rentals...'
 20.times do
   rental = Rental.new(
@@ -58,3 +59,4 @@ puts 'Creating 20 fake rentals...'
   rental.save!
 end
 puts 'rentals Finished!'
+

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'profile/edit'
 
   get 'profile/update'
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
 
 
   resources :profile, only: [ :edit, :update ]
+
+  mount Attachinary::Engine => "/attachinary"
 
   # get 'profile/edit', to: 'profile#edit'
 
