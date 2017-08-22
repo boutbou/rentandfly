@@ -5,18 +5,19 @@
 
 <!-- available drones renvoie un array de drone disponible-->
 
-
-
-
 <% unless @available_drones.nil? %>
-  <div class="container">
-    <div class="row">
-      <% @available_drones.each do |drone| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="drone-card">
-          <%= link_to drone_path(drone) do%>
-          <!-- # fond des cards et css à définir -->
+<div class="container">
+  <div class="row">
+    <% @available_drones.each do |drone| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="drone-card">
+        <%= link_to drone_path(drone) do%>
+        <!-- # fond des cards et css à définir -->
+        <% if drone.photo_drone? %>
+        <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
           <div class="card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://petapixel.com/assets/uploads/2017/04/swelpro_feat.jpg');">
+            <% end %>
             <div class="card-price">
               <%= drone.daily_price %> € / Jour
             </div>
@@ -37,4 +38,4 @@
       <% end %>
     </div>
   </div>
-<% end %>
+  <% end %>
