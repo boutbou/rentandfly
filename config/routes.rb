@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
 
+  get 'myrentals', to: 'pages#myrentals'
 
 
   resources :profile, only: [ :edit, :update ]
