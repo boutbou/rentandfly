@@ -78,7 +78,15 @@ class DronesController < ApplicationController
     rentals.each do |rental|
       drones << rental.drone
     end
-    drones.uniq
+    drones.uniq + drone_no_rental
+  end
+
+  def drone_no_rental
+    drones_no_rental = []
+    Drone.all.each do |drone|
+      drones_no_rental << drone if drone.rentals = []
+    end
+    drones_no_rental
   end
 end
 
