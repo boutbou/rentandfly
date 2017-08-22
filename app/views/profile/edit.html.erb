@@ -1,13 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
 
+ <h2>Edit profile</h2>
 
-<%= simple_form_for @user, url: profile_edit_path, html: { method: :put } do |f| %>
-  <%= f.input :address, required: false, autofocus: true %>
-  <%= f.input :zip_code, required: false, autofocus: true %>
-  <%= f.input :city, required: false, autofocus: true %>
-  <%= f.input :description, required: false, autofocus: true, as: :text %>
-  <%= f.input :photo, as: :attachinary %>
-  <%= f.submit "Update my profile", class: "btn btn-primary" %>
-<% end %>
+      <%= simple_form_for @user, url: profile_edit_path, html: { method: :put } do |f| %>
+      <%= f.input :address, required: false, autofocus: true %>
+      <%= f.input :zip_code, required: false, autofocus: true %>
+      <%= f.input :city, required: false, autofocus: true %>
+      <%= f.input :description, required: false, autofocus: true, as: :text %>
+      <%= f.input :photo, as: :attachinary %>
+      <%= f.submit "Update my profile", class: "btn btn-primary" %>
+      <% end %>
 
-
+    </div>
+  </div>
+</div>
 
