@@ -13,5 +13,7 @@
   <%= f.input :controller, required: false, autofocus: true %>
   <%= f.input :deposit, required: false, autofocus: true %>
   <%= f.input :battery, required: false, autofocus: true %>
+  <%= f.input :photo_footage, as: :attachinary %>
+  <%= f.input :photo_drone, as: :attachinary %>
 <%= f.submit "Create a new drone", class: "btn btn-primary" %>
 <% end %>
