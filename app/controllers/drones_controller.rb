@@ -54,7 +54,7 @@ class DronesController < ApplicationController
   def params_drone_create
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
-                                  :controller, :deposit, :battery,
+                                  :controller, :deposit, :battery, :description,
                                   :photo_drone, photo_footage: [])
   end
 
