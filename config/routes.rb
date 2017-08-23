@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :rentals, only: [ :new, :create ]
   end
 
-  resources :rentals, only: [:destroy]
+  resources :rentals, only: [:destroy, :show]
 
   get 'dashboard', to: 'pages#dashboard'
 
