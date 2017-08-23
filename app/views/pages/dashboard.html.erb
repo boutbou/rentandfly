@@ -11,26 +11,30 @@
 </div>
 
 <!-- Bouton "ajouter un drone" -->
-<%= link_to "Add a drone", new_drone_path, class: "btn btn-primary" %>
+<%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
 la page edit suffit pour les utilisateurs connectés non ?  -->
-
-<ul>
+<div class="container">
   <% Drone.all.each do |drone| %>
-  <li>
-    <% if drone.user = current_user %>
-    <% if drone.photo_drone? %>
-    <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+  <div class="row">
+    <div class="col-xs-12 drone">
+      <% if drone.user = current_user %>
+      <% if drone.photo_drone? %>
+      <div class="drone-image hidden-xs">
+        <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+      </div>
+      <% end %>
+      <div class= drone-body>
+        <h3><%= drone.model %></h3>
+        <p><%= drone.description %></p>
+      </div>
+      <ul class="list-inline drone-controls">
+        <li><%= link_to "Edit", edit_drone_path(drone), class: "btn btn-blue" %> </li>
+        <li><%= link_to "Delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-red" %></li>
+        <% end %>
+      </div>
+    </div>
     <% end %>
-    <%= drone.model %>
-    <%= link_to "edit", edit_drone_path(drone) %> |
-    <%= link_to "delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"} %>
-    <% end %>
-    <% end %>
-  </li>
-</ul>
-
-
-
-
+  </ul>
+</div>
