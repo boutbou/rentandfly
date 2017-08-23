@@ -20,21 +20,22 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
   <div class="row">
     <div class="col-xs-12 drone">
       <% if drone.user = current_user %>
-      <% if drone.photo_drone? %>
       <div class="drone-image hidden-xs">
+      <% if drone.photo_drone? %>
         <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+        <% else %>
+        <%= image_tag "https://www.alain-bensoussan.com/wp-content/uploads/2014/03/Armed-drone%C2%A9-Lee-Barnwell-Fotolia.com_.jpg", class: "drone-image" %>
+        <% end %>
       </div>
-      <% end %>
       <div class= drone-body>
         <h3><%= drone.model %></h3>
         <p><%= drone.description %></p>
       </div>
-      <ul class="list-inline drone-controls">
-        <li><%= link_to "Edit", edit_drone_path(drone), class: "btn btn-blue" %> </li>
-        <li><%= link_to "Delete", drone_path(drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-red" %></li>
-        <% end %>
+      <div class="drone-controls">
+        <%= link_to "Edit", edit_drone_path(drone), class: "btn btn-blue" %>
       </div>
+      <% end %>
+    </div>
     </div>
     <% end %>
-  </ul>
 </div>

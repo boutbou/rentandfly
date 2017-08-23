@@ -8,11 +8,10 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-
+      <!-- Add a drone (when logged in) -->
+      <%= link_to "Add a drone", new_drone_path, class: "btn-red nav" %>
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -44,7 +43,7 @@
       </div>
     <% else %>
        <!-- Add a drone (when logged out) -->
-      <a href="#" class="btn-red" style="margin-right: 60px">Add a drone</a>
+      <%= link_to "Add a drone", new_drone_path, class: "btn-red nav" %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Signup link (when logged out) -->

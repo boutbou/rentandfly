@@ -11,7 +11,7 @@
 </div>
 
 <!-- Bouton "ajouter un drone" -->
-<%= link_to "Add a drone", new_drone_path, class: "btn btn-primary" %>
+<%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
 la page edit suffit pour les utilisateurs connectés non ?  -->
@@ -19,23 +19,38 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
   <% Rental.all.each do |rental| %>
   <div class="row">
     <div class="col-xs-12 drone">
-<!-- ici on est dans le cas du locataire du drone rental.user_id le drone -->
-    <% if rental.user_id = current_user %>
-      <div class="user-avatar"> <!-- a utiliser a la place de current_user :rental.drone.user_id.photo.path -->
-
-
+      <!-- ici on est dans le cas du locataire du drone rental.user_id le drone -->
+      <% if rental.user_id = current_user %>
+      <div class="avatar">
+        <div class="user-avatar">
+         <!-- a utiliser a la place de current_user :rental.drone.user_id.photo.path -->
+         <% if rental.drone.user.photo? %>
+         <%= cl_image_tag rental.drone.user.photo.path %>
+         <% else %>
+         <%= image_tag "https://api.adorable.io/avatars/285/abott@adorable.png", class: "user-avatar" %>
+         <% end %>
+         </div>
+         <div class="user-name">
+         <%= rental.drone.user.first_name %>
+        </div>
+    </div>
+      <div class="drone-image hidden-xs">
+      <% if rental.drone.photo_drone? %>
+       <%= cl_image_tag rental.drone.photo_drone.path, class: "drone-image" %>
+       <% else %>
+        <%= image_tag "https://www.alain-bensoussan.com/wp-content/uploads/2014/03/Armed-drone%C2%A9-Lee-Barnwell-Fotolia.com_.jpg", class: "drone-image" %>
+        <% end %>
      </div>
-     <% if rental.drone.photo_drone? %>
-     <div class="drone-image hidden-xs">
-     <%= cl_image_tag rental.drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
-     </div>
+     <ul class= "list-inline drone-body">
+       <li> <%= rental.drone.model %></li>
+       <li><% if rental.drone.available? %>
+       <p>Available</p>
+       <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+       <% end %>
+        </li>
+       </ul>
      <% end %>
-     <div class= drone-body>
-     <%= rental.drone.model %>
-     <%= rental.drone.available %> |
-     </div>
-     <% end %>
-      </div>
-      </div>
-     <% end %>
+   </div>
  </div>
+ <% end %>
+</div>

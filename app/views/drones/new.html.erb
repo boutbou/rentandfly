@@ -1,18 +1,26 @@
-<%= simple_form_for @drone do |f| %>
- <%= f.error_notification %>
-  <%= f.input :brand, required: false, autofocus: true %>
-  <%= f.input :model, required: false, autofocus: true %>
-  <%= f.input :daily_price, required: false, autofocus: true %>
-  <%= f.input :description, required: false, autofocus: true, as: :text %>
-  <%= f.input :weekly_deal, required: false, autofocus: true %>
-  <%= f.input :monthly_deal, required: false, autofocus: true %>
-  <%= f.input :autonomy, required: false, autofocus: true %>
-  <%= f.input :range, required: false, autofocus: true %>
-  <%= f.input :controller, required: false, autofocus: true %>
-  <%= f.input :deposit, required: false, autofocus: true %>
-  <%= f.input :battery, required: false, autofocus: true %>
-  <%= f.input :photo_footage, as: :attachinary %>
-  <%= f.input :photo_drone, as: :attachinary %>
-<%= f.submit "Create a new drone", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+
+      <%= simple_form_for @drone do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :brand, required: false, autofocus: true %>
+      <%= f.input :model, required: false, autofocus: true %>
+      <%= f.input :daily_price, required: false, autofocus: true %>
+      <%= f.input :description, required: false, autofocus: true, as: :text %>
+      <%= f.input :weekly_deal, required: false, autofocus: true %>
+      <%= f.input :monthly_deal, required: false, autofocus: true %>
+      <%= f.input :autonomy, required: false, autofocus: true %>
+      <%= f.input :range, required: false, autofocus: true %>
+      <%= f.input :controller, required: false, autofocus: true %>
+      <%= f.input :deposit, required: false, autofocus: true %>
+      <%= f.input :battery, required: false, autofocus: true %>
+      <%= f.input :photo_footage, as: :attachinary %>
+      <%= f.input :photo_drone, as: :attachinary %>
+      <%= f.submit "Create a new drone", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
 
