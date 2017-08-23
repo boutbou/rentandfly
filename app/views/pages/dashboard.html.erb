@@ -23,7 +23,7 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
     <div class="col-xs-12 drone">
       <div class="drone-image hidden-xs">
       <% if drone.photo_drone? %>
-        <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+        <%= cl_image_tag drone.photo_drone.path, width: 100, height: 150, crop: :fill %>
         <% else %>
         <%= image_tag "https://www.alain-bensoussan.com/wp-content/uploads/2014/03/Armed-drone%C2%A9-Lee-Barnwell-Fotolia.com_.jpg", class: "drone-image" %>
         <% end %>
