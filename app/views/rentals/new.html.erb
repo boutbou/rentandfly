@@ -1,17 +1,19 @@
-<h1>Rentals#new</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
 
-<%= simple_form_for @rental, url: drone_rentals_path(@drone) do |f| %>
- <%= f.error_notification %>
-  <%= f.input :start_date, required: true, autofocus: true %>
-  <%= f.input :end_date, required: true, autofocus: true %>
+      <%= simple_form_for @rental, url: drone_rentals_path(@drone) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :start_date, required: true, autofocus: true %>
+      <%= f.input :end_date, required: true, autofocus: true %>
 
-<%= f.submit "Book it now", class: "btn btn-primary" %>
-<% end %>
+      <%= f.submit "Book it now", class: "btn btn-primary" %>
+      <% end %>
 
-<!-- Bouton de suppression d'un drone-->
+      <!-- Bouton de suppression d'un drone-->
 
-<%= link_to "delete", rental_path(@drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+      <%= link_to "delete", rental_path(@drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
 
-
-
-
+    </div>
+  </div>
+</div>
