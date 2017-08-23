@@ -4,49 +4,50 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-4">
 
+    <% card_background_image = %>
+    <% if @drone.photo_drone? %>
+    <% cl_image_path @drone.photo_drone.path, height: 800, width: 700, crop: :fill %>
+    <% else %>
+    <% image_path("https://static.pexels.com/photos/442587/pexels-photo-442587.jpeg") %>
+    <% end %>
 
-      <% if @drone.photo_drone? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @drone.photo_drone.path, height: 300, width: 400, crop: :fill %>')">
-        <% else %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.pexels.com/photos/442587/pexels-photo-442587.jpeg')">
-          <% end %>
-          <div class="card-description">
-            <h3><%= @drone.user.first_name %>'s drone </h3>
-            <ul>
-              <h4>It's a wonderfull <% @drone.brand %> </h4>
-              <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>
-              <li> Model : <% @drone.model %></li>
-              <li> Range : <% @drone.range %></li>
-              <li> Time Flight : <% @drone.autonomy %> min</li>
-              <li> Number of batteries : Rent with <% @drone.battery %> batteries</li>
-              <li> Need of controller : <% @drone.controller ? "Yes" : "No" %></li>
-              <li> Deposit : <% @drone.deposit %></li>
-              <li> What's amazing about this drone : <% @drone.description %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="col-xs-12 col-sm-6">
 
-  <!-- # Etat de reservation -->
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home.jpg" %>');">
-        <div class="card-category">Your rental</div>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= card_background_image %>')">
         <div class="card-description">
-          <h3>You booked <%= @drone.user.first_name %>'s drone</h3>
+          <h3><%= @drone.user.first_name %>'s drone </h3>
           <ul>
             <h4>It's a wonderfull <% @drone.brand %> </h4>
-            <li> You booked it from <%= @rental.start_date %> to <%= @rental.end_date %></li>
-            <li> Total is <%= @rental.total_price %> %></li>
+            <li> Price Day/Week/month : <% @drone.daily_price %>€ / <% @drone.weekly_deal %>€ / <% @drone.monthly_deal %>€ </li>
+            <li> Model : <% @drone.model %></li>
+            <li> Range : <% @drone.range %></li>
+            <li> Time Flight : <% @drone.autonomy %> min</li>
+            <li> Number of batteries : Rent with <% @drone.battery %> batteries</li>
+            <li> Need of controller : <% @drone.controller ? "Yes" : "No" %></li>
+            <li> Deposit : <% @drone.deposit %></li>
+            <li> What's amazing about this drone : <% @drone.description %></li>
           </ul>
         </div>
       </div>
     </div>
+  <!-- # Etat de reservation -->
+  <div class="col-xs-12 col-sm-6">
+    <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home.jpg" %>');">
+      <div class="card-category">Your rental</div>
+      <div class="card-description">
+        <h3>You booked <%= @drone.user.first_name %>'s drone</h3>
+        <ul>
+          <h4>It's a wonderfull <% @drone.brand %> </h4>
+          <li> You booked it from <%= @rental.start_date %> to <%= @rental.end_date %></li>
+          <li> Total is <%= @rental.total_price %> %></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+
+</div>
 </div>
 
 <%= link_to "Return to your rentals", myrentals_path %>
