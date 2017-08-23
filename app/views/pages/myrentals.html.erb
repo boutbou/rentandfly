@@ -25,7 +25,7 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
         <div class="user-avatar">
          <!-- a utiliser a la place de current_user :rental.drone.user_id.photo.path -->
          <% if rental.drone.user.photo? %>
-         <%= cl_image_tag rental.drone.user.photo.path %>
+         <%= cl_image_tag rental.drone.user.photo.path, width: 100, height: 150, crop: :fill %>
          <% else %>
          <%= image_tag "https://api.adorable.io/avatars/285/abott@adorable.png", class: "user-avatar" %>
          <% end %>
