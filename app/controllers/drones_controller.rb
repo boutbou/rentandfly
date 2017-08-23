@@ -49,13 +49,14 @@ class DronesController < ApplicationController
     @available_drones = available_drones(searched_start_date, searched_end_date)
     @located_users = delete_unlocated_drones(@available_drones)
     @hash = Gmaps4rails.build_markers(@located_users) do |user, marker|
-      marker.lat flat.latitude
-      marker.lng flat.longitude
+      marker.lat user.latitude
+      marker.lng user.longitude
     end
   end
 
 
   private
+
   def params_drone_create
     params.require(:drone).permit(:brand, :model, :daily_price, :weekly_deal,
                                   :monthly_deal, :autonomy, :range,
@@ -99,9 +100,9 @@ class DronesController < ApplicationController
     array.each do |drone|
       drones_user << drone.user
     end
-    drones_user = drones_user.reject! do |user|
-      user.latitude.nil? || user.longitude.nil?
-    end
+
+    drones_user.reject! { |i| i.latitude.nil? }
+    drones_user
   end
 end
 
