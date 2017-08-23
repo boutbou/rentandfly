@@ -47,6 +47,11 @@ class DronesController < ApplicationController
     searched_start_date = params[:searched_start_date]
     searched_end_date = params[:searched_end_date]
     @available_drones = available_drones(searched_start_date, searched_end_date)
+    @located_users = delete_unlocated_drones(@available_drones)
+    @hash = Gmaps4rails.build_markers(@located_users) do |user, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
 
@@ -87,6 +92,16 @@ class DronesController < ApplicationController
       drones_no_rental << drone if drone.rentals == []
     end
     drones_no_rental
+  end
+
+  def delete_unlocated_drones(array)
+    drones_user = []
+    array.each do |drone|
+      drones_user << drone.user
+    end
+    drones_user = drones_user.reject! do |user|
+      user.latitude.nil? || user.longitude.nil?
+    end
   end
 end
 
