@@ -6,4 +6,12 @@ class User < ApplicationRecord
   has_many :drones, dependent: :destroy
   has_many :rentals, dependent: :destroy
   has_attachment :photo
+  geocoded_by :full_address
+  after_validation :geocode
+
+
+
+  def full_address
+    "#{address}, #{zip_code}, #{city}"
+  end
 end
