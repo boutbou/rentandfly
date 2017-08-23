@@ -5,4 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+
+  def myrentals
+  end
 end

@@ -1,10 +1,21 @@
 .btn-red {
   color: white;
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 5px;
   font-weight: bold;
   background: red;
-  transition: background 0.3s ease;
+  transition: background 2s ease;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.btn-blue {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: #4162e2;
+  transition: background 2s ease;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .nav {
@@ -15,6 +26,14 @@
   background: #EA3F3F;
   text-decoration: none;
   color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.btn-blue:hover {
+  background:   #6177e2;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 }
 
 .cta {
@@ -34,3 +53,13 @@
  text-decoration: none;
  color: white;
 }
+
+.btn-center {
+  display: block;
+  margin: 20px auto 20px auto;
+  width: 180px;
+  height: 80px;
+  padding-top: 20px;
+  font-size: 24px;
+}
+
