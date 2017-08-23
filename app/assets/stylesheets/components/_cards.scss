@@ -13,17 +13,21 @@
 
 
 .card2 {
-  margin: 10px;
+  background-color: white;
   padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 700px;
-  height: 130px;
+  height: 150px;
 }
 
 .card3 {
-  margin: 10px;
+  background-color: white;
   padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 700px;
@@ -31,8 +35,9 @@
 }
 
 .card4 {
+  background-color: white;
   margin: 10px;
-  padding-left: 20px;
+  padding-left: 25px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 300px;
@@ -123,9 +128,9 @@
 
 .drone-card:hover {
   .card-picture{
- opacity: 0.7;
- transition: 0.5s;
-  }
+   opacity: 0.7;
+   transition: 0.5s;
+ }
 }
 
 .drone {
@@ -167,7 +172,7 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
-.avatar {
+.avatar-category {
   padding-right: 20px;
   text-align: center;
   transition: all 0.15s ease;
@@ -175,6 +180,7 @@
   font-size: 13px;
   line-height: 20px;
 }
+
 
 .user-name {
   margin: 2px 0 0;

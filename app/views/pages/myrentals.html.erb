@@ -21,7 +21,7 @@ la page edit suffit pour les utilisateurs connectés non ?  -->
     <div class="col-xs-12 drone">
       <!-- ici on est dans le cas du locataire du drone rental.user_id le drone -->
       <% if rental.user_id = current_user %>
-      <div class="avatar">
+      <div class="avatar-category">
         <div class="user-avatar">
          <!-- a utiliser a la place de current_user :rental.drone.user_id.photo.path -->
          <% if rental.drone.user.photo? %>

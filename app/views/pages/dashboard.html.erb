@@ -29,7 +29,7 @@
           <% end %>
         </div>
         <div class= drone-body>
-          <h3><%= drone.model %></h3>
+        <h3><%=  link_to drone.model, drone_path(drone)%></h3>
           <p><%= drone.description %></p>
         </div>
         <div class="drone-controls">
