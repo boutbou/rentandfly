@@ -12,7 +12,7 @@
 
       <!-- Bouton de suppression d'un drone-->
 
-      <%= link_to "delete", rental_path(@drone), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+      <%= link_to "delete", rental_path(@rental.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
 
     </div>
   </div>
