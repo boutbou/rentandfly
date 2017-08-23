@@ -1,19 +1,21 @@
-<div class="tabs1">
-  <a class="tab1 active">
-    <h3>My drones</h3>
-  </a>
-  <a class="tab1" href="<%= myrentals_path %>">
-    <h3>My rentals</h3>
-  </a>
-  <a class="tab1" href="<%= profile_edit_path %>">
-    <h3>My account</h3>
-  </a>
-</div>
+<div class="dashboard-container">
+  <div class="tabs1">
+    <a class="tab1 active">
+      <h3>My drones</h3>
+    </a>
+    <a class="tab1" href="<%= myrentals_path %>">
+      <h3>My rentals</h3>
+    </a>
+    <a class="tab1" href="<%= profile_edit_path %>">
+      <h3>My account</h3>
+    </a>
+  </div>
 
-<!-- Bouton "ajouter un drone" -->
-<%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
+  <!-- Bouton "ajouter un drone" -->
+  <%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
+
 la page edit suffit pour les utilisateurs connectés non ?  -->
 <div class="container">
   <% current_user.drones.each do |drone| %>
