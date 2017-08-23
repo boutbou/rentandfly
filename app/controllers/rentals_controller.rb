@@ -19,15 +19,11 @@ class RentalsController < ApplicationController
     @rental = Rental.new(params_rental_create)
     @rental.drone = Drone.find(params[:drone_id])
     @rental.user = current_user
-    if @rental.drone.available?
       if @rental.save
         redirect_to dashboard_path, notice: "OK, drone booked for a total price of #{@rental.total_price} €"
       else
         render "rentals/new", notice: "Wrong booking not made"
       end
-    else
-      render "rentals/new", notice: "This drone is not available"
-    end
   end
 
   def new
