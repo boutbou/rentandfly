@@ -1,41 +1,43 @@
-<div class="tabs1">
-  <a class="tab1 active">
-    <h3>My drones</h3>
-  </a>
-  <a class="tab1" href="<%= myrentals_path %>">
-    <h3>My rentals</h3>
-  </a>
-  <a class="tab1" href="<%= profile_edit_path %>">
-    <h3>My account</h3>
-  </a>
-</div>
+<div class="dashboard-container">
+  <div class="tabs1">
+    <a class="tab1 active">
+      <h3>My drones</h3>
+    </a>
+    <a class="tab1" href="<%= myrentals_path %>">
+      <h3>My rentals</h3>
+    </a>
+    <a class="tab1" href="<%= profile_edit_path %>">
+      <h3>My account</h3>
+    </a>
+  </div>
 
-<!-- Bouton "ajouter un drone" -->
-<%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
+  <!-- Bouton "ajouter un drone" -->
+  <%= link_to "Add a drone", new_drone_path, class: "btn btn-blue btn-center" %>
 
 <!-- Liste des drones appartenant au logged-in user. Pas de page vu du drone pour l'instant,
-la page edit suffit pour les utilisateurs connectés non ?  -->
-<div class="container">
-  <% Drone.all.each do |drone| %>
-  <div class="row">
-    <div class="col-xs-12 drone">
-      <% if drone.user = current_user %>
-      <div class="drone-image hidden-xs">
-      <% if drone.photo_drone? %>
-        <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
-        <% else %>
-        <%= image_tag "https://www.alain-bensoussan.com/wp-content/uploads/2014/03/Armed-drone%C2%A9-Lee-Barnwell-Fotolia.com_.jpg", class: "drone-image" %>
+  la page edit suffit pour les utilisateurs connectés non ?  -->
+  <div class="container">
+    <% Drone.all.each do |drone| %>
+    <div class="row">
+      <div class="col-xs-12 drone">
+        <% if drone.user = current_user %>
+        <div class="drone-image hidden-xs">
+          <% if drone.photo_drone? %>
+          <%= cl_image_tag drone.photo_drone.path, width: 200, height: 300, crop: :fill %>
+          <% else %>
+          <%= image_tag "https://www.alain-bensoussan.com/wp-content/uploads/2014/03/Armed-drone%C2%A9-Lee-Barnwell-Fotolia.com_.jpg", class: "drone-image" %>
+          <% end %>
+        </div>
+        <div class= drone-body>
+        <h3><%=  link_to drone.model, drone_path(drone)%></h3>
+          <p><%= drone.description %></p>
+        </div>
+        <div class="drone-controls">
+          <%= link_to "Edit", edit_drone_path(drone), class: "btn btn-blue" %>
+        </div>
         <% end %>
       </div>
-      <div class= drone-body>
-        <h3><%= drone.model %></h3>
-        <p><%= drone.description %></p>
-      </div>
-      <div class="drone-controls">
-        <%= link_to "Edit", edit_drone_path(drone), class: "btn btn-blue" %>
-      </div>
-      <% end %>
-    </div>
     </div>
     <% end %>
-</div>
+  </div>
+
