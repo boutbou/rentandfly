@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
 
-      <%= simple_form_for @rental, url: drone_rentals_path(@drone.id) do |f| %>
+      <%= simple_form_for [@drone,@rental], url: drone_rentals_path do |f| %>
       <%= f.error_notification %>
       <%= f.input :start_date, required: true, autofocus: true %>
       <%= f.input :end_date, required: true, autofocus: true %>
