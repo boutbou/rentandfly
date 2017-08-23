@@ -5,6 +5,7 @@ class RentalsController < ApplicationController
 
   def show
     @rental = Rental.find(params[:id])
+    @drone = Drone.find(@rental.drone_id)
   end
 
   def destroy
